@@ -1,0 +1,6 @@
+<iframe
+    width="{{ if .Get "width" }}{{ .Get "width" }}{{ else }}560{{ end }}"
+    height="{{ if .Get "height" }}{{ .Get "height" }}{{ else }}315{{ end}}"
+    sandbox="allow-same-origin allow-scripts"
+    src="https://{{.Get `instance`}}/videos/embed/{{.Get `id`}}" frameborder="0" allowfullscreen >
+</iframe> 

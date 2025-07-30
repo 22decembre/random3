@@ -1,0 +1,45 @@
+{{ define "content" }}
+<article class="post content">
+      <header class="post-header">
+       {{ partial "article_header" . }}       
+       
+      </header>
+      <div class="post-content"> 
+        {{ .Content}}
+      </div>
+      
+      <footer class="post-footer">
+      
+      <div class="meta">
+
+    {{ if .IsTranslated }}
+              {{ i18n "translations" }} :
+              {{ range .AllTranslations }}
+              <a href="{{ .Permalink }}">{{ .Lang }}</a>
+              {{ end }}
+    {{ end }}
+
+    <br />
+    
+    {{ if .Params.tags }}
+        {{ i18n "tags" }} :
+        {{ range .Params.tags }}
+            #<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>              
+        {{ end }}
+    {{ end }}
+    
+</div>
+      
+    <a href="web+mastodon://share?text={{ .Title }} {{ .Permalink }}" ><img src="{{ .Site.BaseURL }}img/mastodon.png" style="border:0;display: inline-block;vertical-align: middle;" alt="Mastodon" />Mastodon</a> |
+       <a href="https://sharetodiaspora.github.io/?title={{ .Title }}&url={{ .Permalink }}" target="_blank">
+	<img src="{{ .Site.BaseURL }}img/diaspora.png" style="border: 0px solid;display: inline-block;vertical-align: middle;" />Diaspora*</a>
+	| <a title="Facebook" href="https://www.facebook.com/sharer.php?u={{ .Permalink }}"><img src="{{ .Site.BaseURL }}img/fb.png" style="border:0;display: inline-block;vertical-align: middle;" alt="Facebook" />Facebook</a>
+	
+ {{- if (.Param "isso") }}
+  {{- partial "isso.html" . }}
+  {{- end }}
+    
+    </footer>  
+</article>
+
+{{ end }}

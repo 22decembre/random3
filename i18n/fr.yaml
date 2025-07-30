@@ -1,0 +1,89 @@
+- id: by
+  translation: "Par"
+
+- id: tags
+  translation: "Mots-clé"
+
+- id: categories
+  translation: "Catégories"
+    
+- id: readMore
+  translation: "Lire la suite..."
+
+- id: translations
+  translation: "Traductions"
+    
+- id: languages
+  translation: "Langues"
+  
+- id: permalinkToTitle
+  translation: "Lien permanent vers «{{.Title}}»"
+  
+- id: cat
+  translation: "Dans la catégorie"
+
+- id: all_articles_in_cat
+  translation: "Tous les articles dans la catégorie"
+  
+- id: all_articles_with_tag
+  translation: "Tous les articles avec le tag"
+  
+- id: all_articles
+  translation: "Tous les articles"
+  
+- id: monday
+  translation: "lundi"
+
+- id: tuesday
+  translation: "mardi"
+
+- id: wednesday
+  translation: "mercredi"
+  
+- id: thursday
+  translation: "jeudi"
+  
+- id: friday
+  translation: "vendredi"
+  
+- id: saturday
+  translation: "samedi"
+
+- id: sunday
+  translation: "dimanche"
+  
+- id: january
+  translation: "janvier"
+
+- id: february
+  translation: "fevrier"
+
+- id: march
+  translation: "mars"
+  
+- id: april
+  translation: "avril"
+  
+- id: may
+  translation: "mai"
+  
+- id: june
+  translation: "juin"
+
+- id: july
+  translation: "juillet"
+
+- id: august
+  translation: "août"
+
+- id: september
+  translation: "septembre"
+
+- id: october
+  translation: "octobre"
+  
+- id: november
+  translation: "novembre"
+  
+- id: december
+  translation: "decembre"

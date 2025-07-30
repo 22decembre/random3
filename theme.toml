@@ -1,0 +1,19 @@
+name = "Theme Name"
+license = "MIT"
+licenselink = "https://creativecommons.org/licenses/by/4.0/"
+description = "Theme description"
+
+# The home page of the theme, where the source can be found.
+homepage = "https://github.com/gohugoio/gohugoioTheme"
+
+# If you have a running demo of the theme.
+demosite = "https://www.22decembre.eu/"
+
+tags = ["blog", "minimalist", "multilingual" ]
+features = ["blogrol", "blog", "tagcloud", "multilingual"]
+
+# If the theme has multiple authors
+[author]
+  name = "Stéphane 22Decembre"
+  homepage = "https://www.22decembre.eu"
+

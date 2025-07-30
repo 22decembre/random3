@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+
+  <head>
+  {{ block "headers" . }}
+    <meta charset="utf-8" />
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <link rel="preload stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/skeleton.css" />
+    <link rel="preload stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/main.css" />
+    <!--<link rel="preload stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/pygments.css" />-->
+    
+    {{ if .Site.Params.spamtrap }}
+     <a href="{{ .Site.Params.spamtrap }}"></a>
+    {{ end }}
+
+    <link rel ="alternate" type="application/rss+xml"
+                           title="{{ .Site.Title }} — Flux RSS"
+                           href="{{ .Site.LanguagePrefix }}/index.xml" /> 
+
+    <!--[if lte IE 8]><script src="{{ .Site.BaseURL }}/theme/js/html5shiv.js"></script><![endif]-->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+
+  {{ end }}
+  </head>
+  <body>
+    <div class="page">
+      <header class="page-head">
+      
+        <h1>
+          <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        </h1>
+      </header>
+
+      <div class="page-content">
+        {{ block "content" . }}
+        {{ end }}
+      </div>
+
+      {{ partial "sidebar" . }}
+
+      <footer class="page-footer">
+       <!-- <p>Généré par <a href="http://gohugo.io">Hugo</a> et porté par <a href="http://www.openbsd.org/">OpenBSD</a></p> -->
+
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<time datetime="{{ .Date }}" pubdate="pubdate">{{ .Date | time.Format ":date_full" }}</time>
+
+<h1>
+  <a rel="bookmark"
+     href="{{ .Permalink }}"
+     title="{{ T "permalinkToTitle" . }}">{{ .Title }}</a>
+</h1>
+
+<div class="meta">
+
+    {{ if .Params.categories }}
+        {{ i18n "cat" }} :
+        
+        {{ range .Params.categories }}
+            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+        &nbsp;&nbsp;
+    {{ end }}
+    
+    {{ if .IsTranslated }}
+              {{ i18n "translations" }} :
+              {{ range .AllTranslations }}
+              <a href="{{ .Permalink }}">{{ .Lang }}</a>
+              {{ end }}
+    {{ end }}
+    <br />
+    
+    {{ if .Params.tags }}
+        {{ i18n "tags" }} :
+        {{ range .Params.tags }}
+            #<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>              
+        {{ end }}
+    {{ end }}
+    
+</div>

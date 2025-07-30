@@ -1,0 +1,45 @@
+{{ define "content" }}
+<section class="content">
+
+{{ if eq .Kind "term" }}
+    {{ if eq .Type "tags" }}
+        <h1 id="page-title">{{ i18n "all_articles_with_tag" }} «{{ .Data.Term }}»</h1>
+    {{ else if eq .Type "categories" }}
+        <h1 id="page-title">{{ i18n "all_articles_in_cat" }} «{{ .Data.Term }}»</h1>
+     {{ end }}
+
+{{ else }}
+    
+    <h1 id="page-title">{{ i18n "all_articles" }}</h1>
+    
+{{ end }}
+
+
+
+
+{{ partial "pagination" . }}
+
+{{ range .Paginator.Pages }}
+      <article class="post">
+        <header class="post-header">
+        {{ partial "article_header" . }}
+        </header>
+
+        <div class="post-content"> 
+        {{ with .Description }}
+            {{ $.Scratch.Set "summary" (markdownify .) }}
+        {{ else }}
+            {{ $.Scratch.Set "summary" ((delimit (findRE "(<p.*?>.*?</p>\\s*)+" .Content) "[&hellip;] ") | plainify | truncate (default 200 .Site.Params.summary_length) (default " &hellip;" .Site.Params.text.truncated ) | replaceRE "&amp;" "&" | safeHTML) }}
+        {{ end }}
+        {{ $.Scratch.Get "summary" }}
+        </div>
+        <footer class="post-footer">
+          <a class="readmore" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>
+        </footer>
+      </article>
+{{ end }}
+
+{{ partial "pagination" . }}
+
+    </section>
+{{ end }}

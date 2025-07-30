@@ -1,0 +1,6 @@
+<footer id="pagination">
+  {{ if .Paginator.HasPrev }}
+  <a class="post readmore" href="{{ .Paginator.Prev.URL }}">... Newer articles</a> {{ end }}
+  {{ if .Paginator.HasNext }}
+  <a class="post readmore" href="{{ .Paginator.Next.URL }}">Older articles ...</a> {{ end }}
+</footer>

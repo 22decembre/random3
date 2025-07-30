@@ -1,0 +1,63 @@
+{{ define "content" }}
+<section class="content">
+
+<h1 id="page-title">{{ .Title }}</h1>
+
+{{ $permalink := strings.TrimSuffix "/"  .Page.RelPermalink }}
+{{ $parts := split $permalink "/" }}
+{{ $dateParts := after 2 $parts }}
+{{ $posts := .Site.RegularPages }}
+
+
+{{ $filtered := slice }}
+
+{{ range $posts }}
+  {{ $match := true }}
+  {{ if ge (len $dateParts) 1 }}
+    {{ if ne (.Date.Format "2006") (index $dateParts 0) }}
+      {{ $match = false }}
+    {{ end }}
+  {{ end }}
+  {{ if ge (len $dateParts) 2 }}
+    {{ if ne (.Date.Format "2006-01") (printf "%s-%s" (index $dateParts 0) (index $dateParts 1)) }}
+      {{ $match = false }}
+    {{ end }}
+  {{ end }}
+  {{ if ge (len $dateParts) 3 }}
+    {{ if ne (.Date.Format "2006-01-02") (printf "%s-%s-%s" (index $dateParts 0) (index $dateParts 1) (index $dateParts 2)) }}
+      {{ $match = false }}
+    {{ end }}
+  {{ end }}
+  {{ if $match }}
+    {{ $filtered = $filtered | append . }}
+  {{ end }}
+{{ end }}
+
+
+{{ $paginator := .Paginate $filtered }}
+
+{{ range $paginator.Pages }}
+      <article class="post">
+        <header class="post-header">
+        {{ partial "article_header" . }}
+        </header>
+
+        <div class="post-content">
+        {{ with .Description }}
+            {{ $.Scratch.Set "summary" (markdownify .) }}
+        {{ else }}
+            {{ $.Scratch.Set "summary" ((delimit (findRE "(<p.*?>.*?</p>\\s*)+" .Content) "[&hellip;] ") | plainify | truncate (default 200 .Site.Params.summary_length) (default " &hellip;" .Site.Params.text.truncated ) | replaceRE "&amp;" "&" | safeHTML) }}
+        {{ end }}
+        {{ $.Scratch.Get "summary" }}
+        </div>
+
+        <footer class="post-footer">
+          <a class="readmore" href="{{ .RelPermalink }}">{{ i18n "readMore" }}</a>
+        </footer>
+      </article>
+{{ end }}
+
+{{ partial "pagination" . }}
+
+</section>
+{{ end }}

@@ -1,0 +1,5 @@
+{{- $w := .Get "width" -}}
+{{- $h := .Get "height" -}}
+{{- $a := .Get "alt" -}}
+{{- $src := .Get "src" -}}
+  <img src="{{$src}}" {{ if $w }} width="{{$w}}" {{end}} {{ if $h }} height="{{$a}}" {{end}} {{ if $a }} alt="{{$a}}" {{end}} >

@@ -1,0 +1,86 @@
+<aside class="page-sidebar">
+{{ $root :=.Site.BaseURL }}
+    <nav class="widget">
+      <h3>Site</h3>
+      
+      <ul>
+        {{ range .Site.Data.Local }}
+            <li><a href="{{ .url }}">{{ .name }}</a></li>
+        {{ end }}
+      <li><a type="application/rss+xml" href="{{ .Site.LanguagePrefix }}/index.xml" rel="alternate">Flux RSS</a></li>
+      </ul>
+      
+
+	</nav>
+	
+      {{ if hugo.IsMultilingual }}
+      
+      
+      <nav class="widget">
+      <h3>{{ i18n "languages" }}</h3>
+      <ul>
+      {{ range .Site.Languages }}
+          <li><a href="{{ $root}}{{ .Lang }}/" rel="alternate">{{ .LanguageName }}</a></li>
+      
+      {{ end }}
+    </ul>   
+    </nav>
+      
+    {{ end }}
+
+    <nav class="widget">
+    <h3>{{ i18n "categories" }}</h3>
+        <ul>
+        {{range $name, $taxonomy := .Site.Taxonomies.categories}}
+            <li><a href="{{$root}}{{"categories/" | relLangURL}}{{$name | urlize}}">{{$name}}</a></li>
+        {{end}}
+        </ul>
+    
+    <nav class="widget">
+    <h3>Social</h3>
+        <ul>
+        {{ range .Site.Data.Social }}
+            <li><a href="{{ .url }}">{{ .name }}</a></li>
+        {{ end }}
+        </ul>
+    </nav>
+    
+    <nav class="widget">
+    <h3>Blogroll</h3>
+        <ul>
+        {{ range .Site.Data.Blogroll }}
+            <li><a href="{{ .url }}">{{ .name }}</a></li>
+        {{ end }}
+        </ul>
+    </nav>
+
+    <nav class="widget">
+    <h3>Tags</h3>
+    <ul class="tagcloud">
+    
+    {{ if gt (len $.Site.Taxonomies.tags) 0 }}
+    <!--{{ $largestFontSize := 130 }}-->
+    {{ $largestFontSize := 180 }}
+    {{ $smallestFontSize := 85 }}
+    {{ $fontSpread := sub $largestFontSize $smallestFontSize }}
+    {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
+    {{ $min := len (index $.Site.Taxonomies.tags.ByCount.Reverse 0).Pages }}
+    {{ $spread := sub $max $min }}
+    {{ $fontStep := div $fontSpread $spread }}
+
+        {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+            {{ $currentTagCount := len $taxonomy.Pages }}
+            {{ $currentFontSize := (add $smallestFontSize (mul (sub $currentTagCount $min) $fontStep) ) }}
+            {{ $count := len $taxonomy.Pages }}
+            {{ $weigth := div (sub (math.Log $count) (math.Log $min)) (sub (math.Log $max) (math.Log $min)) }}
+            {{ $currentFontSize := (add $smallestFontSize (mul (sub $largestFontSize $smallestFontSize) $weigth) ) }}
+            <!--Current font size: {{$currentFontSize}}-->
+            <li><a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" style="font-size:{{$currentFontSize}}%">{{ $name }}</a></li>
+        {{ end }}
+    {{ end }} 
+
+    
+        </ul>
+    </nav>
+    
+</aside>

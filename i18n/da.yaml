@@ -1,0 +1,53 @@
+- id: by
+  translation: "Af"
+
+- id: tags
+  translation: "Tags"
+
+- id: categories
+  translation: "Kategorier"
+
+- id: readMore
+  translation: "Læse mere..."
+
+- id: translations
+  translation: "Oversættelser"
+
+- id: languages
+  translation: "Sprog"
+
+- id: permalinkToTitle
+  translation: "Fast link til «{{.Title}}»"
+
+- id: cat
+  translation: "I kategorien"
+
+- id: all_articles_in_cat
+  translation: "Alle artikler i kategorien"
+  
+- id: all_articles_with_tag
+  translation: "Alle artikler med tag"
+  
+- id: all_articles
+  translation: "Alle artikler"
+
+- id: monday
+  translation: "mandag"
+
+- id: tuesday
+  translation: "tirsdag"
+
+- id: wednesday
+  translation: "onsdag"
+  
+- id: thursday
+  translation: "torsdag"
+  
+- id: friday
+  translation: "fredag"
+  
+- id: saturday
+  translation: "lørdag"
+
+- id: sunday
+  translation: "søndag"
