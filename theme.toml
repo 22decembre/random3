@@ -1,7 +1,7 @@
-name = "Theme Name"
-license = "MIT"
+name = "Random3"
+license = "CC-4.0"
 licenselink = "https://creativecommons.org/licenses/by/4.0/"
-description = "Theme description"
+description = "Minimalist, clear blog style"
 
 # The home page of the theme, where the source can be found.
 homepage = "https://github.com/gohugoio/gohugoioTheme"
