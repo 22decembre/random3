@@ -1,4 +1,4 @@
-# Hugo-random3
+# Random3
 
 This is my Hugo theme, translated form my Pelican theme, which was an adaptation of Sam Hocevar's dev-random theme.
 
@@ -10,7 +10,7 @@ Please just keep my name as the original author and provide a link to my [websit
 Clone the git repo, and write the theme's name in the conf' file and you're on tracks.
 
     cd ~/hugo/themes/
-    git clone https://framagit.org/22decembre/hugo-random3
+    git clone https://github.com/22decembre/random3.git
     
 In config.toml :
 
