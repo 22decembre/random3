@@ -27,8 +27,11 @@ This theme has a few extras that you can configure through config.toml:
     [params]
     isso="https://www.your.website.net/isso/"
     spamtrap="honey@your.website.net"
+    HugoFooter = true
 
 [Isso](https://posativ.org/isso/) is a python self-hosted comment system. It will be placed at the bottom of articles.
+
+The HugoFooter will display a footer at the bottom of all the pages with links to the Hugo website, the theme's github as well as the theme's author's website. Default is to display the footer.
 
 ## Tags
 

@@ -38,10 +38,15 @@
 
       {{ partial "sidebar" . }}
 
+
+    {{ if .Site.Params.HugoFooter }}
       <footer class="page-footer">
-       <!-- <p>Généré par <a href="http://gohugo.io">Hugo</a> et porté par <a href="http://www.openbsd.org/">OpenBSD</a></p> -->
+
+       <p>{{ i18n "CompiledWith" }} <a href="http://gohugo.io">Hugo</a>, {{ i18n "Using" }} <a href="https://github.com/22decembre/random3">Random3</a>, {{ i18n "By" }} <a href="https://www.22decembre.eu/">Stéphane 22Decembre</a>.
+       </p>
 
       </footer>
+      {{ end }}
     </div>
   </body>
 </html>

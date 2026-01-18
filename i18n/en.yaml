@@ -87,3 +87,12 @@
   
 - id: december
   translation: "december"
+
+- id: CompiledWith
+  translation: 'Compiled with'
+
+- id: Using
+  translation: 'using'
+
+- id: By
+  translation: 'by'
